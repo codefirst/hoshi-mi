@@ -2,11 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'pg'
-
 gem 'json'
 gem 'devise'
 gem "omniauth-twitter"
@@ -15,6 +10,7 @@ gem "omniauth-twitter"
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'haml-rails',   '~> 0.3.4'
   gem 'jquery-rails', '~> 2.0.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -23,6 +19,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :postgresql do
+  gem 'pg'
+end
+
+group :test, :development do
+  gem 'sqlite3'
+  gem 'minitest-rails'
+end
 
 
 # To use ActiveModel has_secure_password
