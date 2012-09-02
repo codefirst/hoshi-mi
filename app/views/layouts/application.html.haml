@@ -14,7 +14,6 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="images/favicon.ico" rel="shortcut icon")
 
 
   %body
@@ -31,7 +30,9 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
+            %ul.nav.pull-right
               - if user_signed_in?
+                %li= link_to image_tag(current_user.icon_url, {:class => "profile"}) + current_user.name, "https://twitter.com/#{current_user.name}", {:target => :blank}
                 %li= link_to "Logout", destroy_user_session_path
               - else
                 %li= link_to "Login", user_omniauth_authorize_path(:twitter)
@@ -51,11 +52,12 @@
                 %li= link_to "Link 1", "/path1"
                 %li= link_to "Link 2", "/path2"
                 %li= link_to "Link 3", "/path3"
-    
+
       %footer
-        %p &copy; Company 2012
+        %p Copyright (C) 2012 codefirst.org. All rights reserved.
     /
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+
