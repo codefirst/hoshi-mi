@@ -1,4 +1,4 @@
 class Log < ActiveRecord::Base
   belongs_to :graph
-  attr_accessible :happend_at, :number
+  attr_accessible :graph_id, :happened_at, :number
 end

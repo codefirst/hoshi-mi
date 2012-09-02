@@ -2,7 +2,7 @@ class CreateLogs < ActiveRecord::Migration
   def change
     create_table :logs do |t|
       t.references :graph_id
-      t.timestamp :happend_at
+      t.timestamp :happened_at
       t.integer :number
 
       t.timestamps

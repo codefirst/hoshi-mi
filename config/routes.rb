@@ -1,5 +1,6 @@
 HoshiMi::Application.routes.draw do
   resources :graphs
+  post 'api/:service/:section/:graph' => 'api#log', :as => :log
 
   get "welcome/index"
 

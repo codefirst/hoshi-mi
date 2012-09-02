@@ -3,10 +3,10 @@
 
 one:
   graph_id: 
-  happend_at: 2012-09-02 12:15:42
+  happened_at: 2012-09-02 12:15:42
   number: 1
 
 two:
   graph_id: 
-  happend_at: 2012-09-02 12:15:42
+  happened_at: 2012-09-02 12:15:42
   number: 1
