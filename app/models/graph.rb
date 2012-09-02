@@ -1,7 +1,7 @@
 class Graph < ActiveRecord::Base
   has_many :logs
   belongs_to :created_by, :class_name => :User
-  attr_accessible :color, :name, :secret, :section, :service
+  attr_accessible :color, :name, :secret, :section, :service, :created_by
 
   validates_format_of :service, :with => /[\w]+/
   validates_format_of :section, :with => /[\w]+/

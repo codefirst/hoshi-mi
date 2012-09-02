@@ -2,11 +2,11 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  graph_id: 
+  graph_id: 1
   happened_at: 2012-09-02 12:15:42
   number: 1
 
 two:
-  graph_id: 
+  graph_id: 1
   happened_at: 2012-09-02 12:15:42
   number: 1

@@ -1,12 +1,12 @@
 class CreateLogs < ActiveRecord::Migration
   def change
     create_table :logs do |t|
-      t.references :graph_id
+      t.references :graph
       t.timestamp :happened_at
       t.integer :number
 
       t.timestamps
     end
-    add_index :logs, :graph_id_id
+    add_index :logs, :graph_id
   end
 end

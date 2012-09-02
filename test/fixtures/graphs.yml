@@ -1,18 +1,11 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  service: MyString
-  section: MyString
-  name: MyString
-  color: MyString
-  created_by: 
-  secret: MyString
-
-two:
-  service: MyString
-  section: MyString
-  name: MyString
-  color: MyString
-  created_by: 
-  secret: MyString
+graph1:
+  id: 1
+  service: service1
+  section: section1
+  name: graph1
+  color: '#0000ff'
+  created_by:
+  secret: 'aaa'

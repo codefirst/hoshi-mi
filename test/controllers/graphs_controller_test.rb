@@ -1,9 +1,12 @@
 require "minitest_helper"
 
 class GraphsControllerTest < MiniTest::Rails::ActionController::TestCase
+  include Devise::TestHelpers
 
   before do
+    sign_in User.new
     @graph = Graph.new
+    @graph.save
   end
 
   def test_index
