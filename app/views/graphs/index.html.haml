@@ -7,9 +7,6 @@
     %th Name
     %th Color
     %th Created by
-    %th Secret
-    %th
-    %th
     %th
 
   - @graphs.each do |graph|
@@ -18,12 +15,9 @@
       %td= graph.section
       %td= graph.name
       %td= graph.color
-      %td= graph.created_by
-      %td= graph.secret
+      %td= (graph.created_by.nil? ? '' : graph.created_by.name)
       %td= link_to 'Show', graph
-      %td= link_to 'Edit', edit_graph_path(graph)
-      %td= link_to 'Destroy', graph, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Graph', new_graph_path
+= link_to 'New Graph', new_graph_path if user_signed_in?

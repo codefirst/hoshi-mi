@@ -1,4 +1,5 @@
 class Graph < ActiveRecord::Base
+  has_many :logs
   belongs_to :created_by, :class_name => :User
   attr_accessible :color, :name, :secret, :section, :service
 
