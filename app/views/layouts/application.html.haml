@@ -24,12 +24,12 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Hoshi-mi
+          = link_to "Hoshi-mi", root_path, {:class => "brand"}
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Graphs", root_path
+              %li= link_to "About", "/about"
+              %li= link_to "Doc", "https://hoshi-mi.readthedocs.org"
             %ul.nav.pull-right
               - if user_signed_in?
                 %li= link_to image_tag(current_user.icon_url, {:class => "profile"}) + current_user.name, "https://twitter.com/#{current_user.name}", {:target => :blank}
@@ -46,12 +46,11 @@
             = yield
           .span3
             .well.sidebar-nav
-              %h3 Sidebar
+              %h3 Menu
               %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+                %li= link_to "Graphs", root_path
+                %li= link_to "About", "/about"
+                %li= link_to "Doc", "https://hoshi-mi.readthedocs.org"
 
       %footer
         %p Copyright (C) 2012 codefirst.org. All rights reserved.
