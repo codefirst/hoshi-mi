@@ -4,7 +4,8 @@ gem 'rails', '3.2.8'
 
 gem 'json'
 gem 'devise'
-gem "omniauth-twitter"
+gem 'omniauth-twitter'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
