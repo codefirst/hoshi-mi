@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 gem 'json'
+gem 'uuidtools'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'thin'

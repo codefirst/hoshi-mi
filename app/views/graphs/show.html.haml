@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Service:
+  = @graph.service
+%p
+  %b Section:
+  = @graph.section
+%p
+  %b Name:
+  = @graph.name
+%p
+  %b Color:
+  = @graph.color
+%p
+  %b Created by:
+  = @graph.created_by
+%p
+  %b Secret:
+  = @graph.secret
+
+= link_to 'Edit', edit_graph_path(@graph)
+\|
+= link_to 'Back', graphs_path
