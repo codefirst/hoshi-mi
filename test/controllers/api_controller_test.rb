@@ -1,10 +1,13 @@
 require "minitest_helper"
 
-class GraphsControllerTest < MiniTest::Rails::ActionController::TestCase
+class ApiControllerTest < MiniTest::Rails::ActionController::TestCase
   include Devise::TestHelpers
 
+  before do
+    sign_in User.new
+  end
+
   def test_log
-    sign_in User.new 
     post :log, :service => 'service', :section => 'section', :graph => 'graph', :secret => 'aaa', :number => 1
     assert_response :success
   end

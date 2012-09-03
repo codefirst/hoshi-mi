@@ -5,7 +5,7 @@ class GraphsControllerTest < MiniTest::Rails::ActionController::TestCase
 
   before do
     sign_in User.new
-    @graph = Graph.new
+    @graph = Graph.new(:service => 'service1', :section => 'section1', :name => 'name1', :color => '#0000ff', :secret => 'secret1')
     @graph.save
   end
 
@@ -21,6 +21,7 @@ class GraphsControllerTest < MiniTest::Rails::ActionController::TestCase
   end
 
   def test_create
+    @graph.id = nil
     assert_difference('Graph.count') do
       post :create, :graph => @graph.attributes
     end
