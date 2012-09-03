@@ -1,5 +1,9 @@
-Hoshi-mi: A portable graph / visualization tool
+Hoshi-mi
 ========================================
+
+Overview
+------------------------------
+Hoshi-mi is a portable graph / visualization tool.
 
 Requirements
 ------------------------------
@@ -10,10 +14,10 @@ Requirements
 Setup
 ------------------------------
 
-   $ cd path/to/hoshi-mi
-   $ bundle install --path .bundle
-   $ bundle exec rake db:migrate
-   $ bundle exec rails s
+    $ cd path/to/hoshi-mi
+    $ bundle install --path .bundle
+    $ bundle exec rake db:migrate
+    $ bundle exec rails s
 
 Author
 ------------------------------
@@ -21,6 +25,7 @@ Author
  * @mallowlabs
  * @suer
 
+License
 ------------------------------
 The MIT License (MIT)
 Copyright (c) 2012 codefirst.org
