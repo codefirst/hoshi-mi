@@ -19,6 +19,12 @@
   %b Secret:
   = @graph.secret
 
+#graph
+
 = link_to 'Edit', edit_graph_path(@graph)
 \|
 = link_to 'Back', graphs_path
+
+= content_for :javascript do
+  :javascript
+    #{@graph_js}

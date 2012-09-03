@@ -14,6 +14,13 @@ class GraphsController < ApplicationController
   # GET /graphs/1.json
   def show
     @graph = Graph.find(params[:id])
+    morris = HoshiMi::MorrisGraph.new
+    morris.data = [
+      {:x => 2010, :y => 10},
+      {:x => 2009, :y => 9},
+      {:x => 2008, :y => 8}
+    ]
+    @graph_js = morris.to_js
 
     respond_to do |format|
       format.html # show.html.erb
