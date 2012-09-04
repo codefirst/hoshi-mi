@@ -15,11 +15,7 @@ class GraphsController < ApplicationController
   def show
     @graph = Graph.find(params[:id])
     morris = HoshiMi::MorrisGraph.new
-    morris.data = [
-      {:x => 2010, :y => 10},
-      {:x => 2009, :y => 9},
-      {:x => 2008, :y => 8}
-    ]
+    morris.data = @graph.logs.map {|log| {:x => log.happened_at.to_date, :y => log.number} }
     @graph_js = morris.to_js
 
     respond_to do |format|
