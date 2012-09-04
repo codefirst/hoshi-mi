@@ -1,13 +1,13 @@
 %h1 Welcome!
 %p Hoshi-mi is a portable graph/visualization tool. You can make many graphs easily.
 
-.graph#example
+.graph#graph
 
 = content_for :javascript do
   :javascript
     // annual data
     Morris.Line({
-      element: 'example',
+      element: 'graph',
       data: [
         {y: '2012', a: 100},
         {y: '2011', a: 75},
