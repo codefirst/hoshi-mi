@@ -7,6 +7,28 @@
     %b Secret:
     = @graph.secret
 
+- if @graph.logs.size == 0
+  .getting-started
+    %b How to post logs.
+    %ul
+      %li
+        %b URL:
+        = "#{root_url}api/#{@graph.service}/#{@graph.section}/#{@graph.name}"
+      %li
+        %b Method:
+        POST
+      %li
+        %b Parameters:
+        %ul
+          %li
+            %b= "secret=#{@graph.secret}"
+          %li
+            %b number=Integer
+      %li
+        %b Example: input a following command
+      %code $ curl -F 'number=1' -F 'secret=#{@graph.secret}' '#{root_url}api/#{@graph.service}/#{@graph.section}/#{@graph.name}'
+      %li
+
 #graph
 
 = link_to 'Edit', edit_graph_path(@graph)
