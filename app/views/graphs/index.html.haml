@@ -1,6 +1,6 @@
-%h1 Listing graphs
+%h3 Listing graphs
 
-%table
+%table.table.table-striped
   %tr
     %th Service
     %th Section
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Graph', new_graph_path if user_signed_in?
+= link_to 'New Graph', new_graph_path, :class => 'btn btn-primary' if user_signed_in?
