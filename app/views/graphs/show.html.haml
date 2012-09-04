@@ -1,23 +1,13 @@
 %p#notice= notice
 
-%p
-  %b Service:
-  = @graph.service
-%p
-  %b Section:
-  = @graph.section
-%p
-  %b Name:
-  = @graph.name
-%p
-  %b Color:
-  = @graph.color
+%h3= "#{@graph.service} > #{@graph.section} > #{@graph.name}"
 %p
   %b Created by:
-  = @graph.created_by
-%p
-  %b Secret:
-  = @graph.secret
+  = (@graph.created_by.nil? ? '' : image_tag(@graph.created_by.icon_url, :class => 'profile') + @graph.created_by.name)
+- if is_own?(@graph)
+  %p
+    %b Secret:
+    = @graph.secret
 
 #graph
 
