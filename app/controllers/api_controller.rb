@@ -11,8 +11,12 @@ class ApiController < ApplicationController
       return
     end
 
+    now = Time.now
+    # delete today's log
+    Log.delete_all(["happened_at >= ? and happened_at <= ?", now.beginning_of_day, now.end_of_day])
+
     # add log
-    log = Log.new(:happened_at => Time.now, :number => params[:number])
+    log = Log.new(:happened_at => now, :number => params[:number])
     log.graph = graph
     if log.save
       render :json => {:message => 'ok'}.to_json
