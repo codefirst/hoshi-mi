@@ -13,4 +13,5 @@
 //= require jquery
 //= require raphael
 //= require morris
+//= require 'twitter/bootstrap'
 //= require_tree .
