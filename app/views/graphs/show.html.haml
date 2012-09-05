@@ -1,7 +1,7 @@
 %h3= "#{@graph.service} > #{@graph.section} > #{@graph.name}"
 %p
   %b Created by:
-  = (@graph.created_by.nil? ? '' : image_tag(@graph.created_by.icon_url, :class => 'profile') + ' ' + @graph.created_by.name)
+  = user_link @graph.created_by
 - if is_own?(@graph)
   %p
     %b Secret:

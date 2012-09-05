@@ -15,7 +15,7 @@
       %td= graph.section
       %td= graph.name
       %td= graph.color
-      %td= (graph.created_by.nil? ? '' : graph.created_by.name)
+      %td= user_link graph.created_by
       %td= link_to 'Show', graph
 
 %br
