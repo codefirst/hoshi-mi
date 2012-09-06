@@ -31,8 +31,9 @@
 
 #graph
 
-= link_to 'Edit', edit_graph_path(@graph)
-\|
+- if is_own?(@graph)
+  = link_to 'Edit', edit_graph_path(@graph)
+  \|
 = link_to 'Back', graphs_path
 
 = content_for :javascript do
