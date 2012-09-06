@@ -7,7 +7,7 @@
     %b Secret:
     = @graph.secret
 
-- if @graph.logs.size == 0
+- if @graph.logs.size == 0 and @graph.owner?(current_user)
   .getting-started
     %b How to post logs.
     %ul
@@ -26,7 +26,7 @@
             %b number=Integer
       %li
         %b Example: input a following command
-      %code $ curl -F 'number=1' -F 'secret=#{@graph.secret}' '#{root_url}api/#{@graph.service}/#{@graph.section}/#{@graph.name}'
+      %code $ curl -F "number=1" -F "secret=#{@graph.secret}" "#{root_url}api/#{@graph.service}/#{@graph.section}/#{@graph.name}"
       %li
 
 #graph

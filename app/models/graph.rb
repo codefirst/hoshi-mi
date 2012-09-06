@@ -9,6 +9,11 @@ class Graph < ActiveRecord::Base
 
   before_create :on_create
 
+  def owner?(user)
+    return false if user.nil? or created_by.nil?
+    user.id == created_by.id
+  end
+
   private
   def on_create
     self.color = '#0000ff' if self.color.blank?
