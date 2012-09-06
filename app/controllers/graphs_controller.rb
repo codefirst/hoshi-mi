@@ -21,7 +21,13 @@ class GraphsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @graph }
+      format.json do
+        if @graph.owner?(current_user)
+          render :json => @graph.to_json
+        else
+          render :json => @graph.to_json(:except => :secret)
+        end
+      end
     end
   end
 
