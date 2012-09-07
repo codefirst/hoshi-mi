@@ -4,22 +4,42 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe GraphsController do
   include Devise::TestHelpers
   before do
-    sign_in User.new
+    @owner = User.new
+    @owner.id = 1
+    @user = User.new
+    @user.id = 2
+    sign_in @user
     @graph = Graph.new(:service => 'service1', :section => 'section1', :name => 'name1', :color => '#0000ff', :secret => 'secret1')
+    @graph.created_by = @owner
     @graph.save
   end
 
   context "get index" do
     before { get :index }
     subject { response }
-    it { should be_success } 
+    it { should be_success }
     it { assigns[:graphs].should_not be_nil }
+  end
+
+  context "cannot get secret keys of other's graphs in get index" do
+    before { get :index, :format => 'json' }
+    subject { JSON.parse(response.body)[-1] }
+    it { should_not have_key('secret') }
+  end
+
+  context "can get secret keys of my graphs in get index" do
+    before {
+      sign_in @owner
+      get :index, :format => 'json'
+    }
+    subject { JSON.parse(response.body)[-1] }
+    it { should have_key('secret') }
   end
 
   context "get new" do
     before { get :new }
     subject { response }
-    it { should be_success } 
+    it { should be_success }
   end
 
   context "get create" do
@@ -35,6 +55,21 @@ describe GraphsController do
     before { get :show, :id => @graph.to_param }
     subject { response }
     it { should be_success }
+  end
+
+  context "cannot get secret keys of other's graphs in get index" do
+    before { get :show, :id => @graph.to_param, :format => 'json' }
+    subject { JSON.parse(response.body) }
+    it { should_not have_key('secret') }
+  end
+
+  context "can get secret keys of my graphs in get index" do
+    before {
+      sign_in @owner
+      get :show, :id => @graph.to_param, :format => 'json'
+    }
+    subject { JSON.parse(response.body) }
+    it { should have_key('secret') }
   end
 
   context "get edit" do

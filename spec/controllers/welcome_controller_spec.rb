@@ -9,7 +9,7 @@ describe WelcomeController do
   end
 
   context "get index" do
-    before { get :index } 
+    before { get :index }
     subject { response }
     it { should be_success }
   end

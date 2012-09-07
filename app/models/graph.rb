@@ -10,8 +10,15 @@ class Graph < ActiveRecord::Base
   before_create :on_create
 
   def owner?(user)
-    return false if user.nil? or created_by.nil?
+    return false if user.nil? or created_by.nil? or user.id.nil? or created_by.id.nil?
     user.id == created_by.id
+  end
+
+  def as_json(options = {})
+    if not options.has_key?(:current_user) or not owner?(options[:current_user])
+      options[:except] ||= :secret
+    end
+    super(options)
   end
 
   private
