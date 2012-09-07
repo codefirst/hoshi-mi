@@ -26,7 +26,13 @@ Test
 
 or
 
+    $ bundle exec rake spec
+
+if you are a hoshi-mi developer, run a following command on background,
+
     $ bundle exec guard start
+
+then, enjoy developing!!
 
 Author
 ------------------------------
