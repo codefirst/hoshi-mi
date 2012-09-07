@@ -19,6 +19,15 @@ Setup
     $ bundle exec rake db:migrate
     $ bundle exec rails s
 
+Test
+------------------------------
+
+    $ bundle exec rspec
+
+or
+
+    $ bundle exec guard start
+
 Author
 ------------------------------
 
