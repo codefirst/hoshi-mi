@@ -28,7 +28,11 @@ end
 
 group :test, :development do
   gem 'sqlite3'
-  gem 'minitest-rails'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end
 
 
