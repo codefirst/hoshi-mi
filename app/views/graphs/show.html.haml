@@ -7,7 +7,7 @@
     %b Secret:
     = @graph.secret
 
-  - if @graph.logs.size == 0
+  - if @graph.logs.empty?
     .getting-started
       %b How to post logs.
       %ul
@@ -27,6 +27,11 @@
         %li
           %b Example: input a following command
         %code $ curl -F "number=1" -F "secret=#{@graph.secret}" "#{root_url}api/#{@graph.service}/#{@graph.section}/#{@graph.name}"
+  - else
+    %ul.nav.nav-tabs
+      %li{ :class => active?(:month) }= link_to("Monthly", graph_path(@graph, :resolution => :month))
+      %li{ :class => active?(:day)   }= link_to("Daily"  , graph_path(@graph, :resolution => :day))
+      %li{ :class => active?(:hour)  }= link_to("Hourly" , graph_path(@graph, :resolution => :hour))
 
 #graph
 

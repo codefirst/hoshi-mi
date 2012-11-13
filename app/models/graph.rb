@@ -21,6 +21,24 @@ class Graph < ActiveRecord::Base
     super(options)
   end
 
+  def logs_by(resolution)
+    xs = logs.group_by{|item|
+      case resolution
+      when :hour
+        item.happened_at.change(:min=>0)
+      when :day
+        item.happened_at.beginning_of_day
+      when :month
+        item.happened_at.beginning_of_month
+      end
+    }.map{|key, values|
+      ys = values.map{|v| v.number }
+      [ key, ys.sum / ys.size ]
+    }.sort_by{|item|
+      item.first
+    }
+  end
+
   private
   def on_create
     self.color = '#0000ff' if self.color.blank?
