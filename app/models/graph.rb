@@ -23,17 +23,10 @@ class Graph < ActiveRecord::Base
 
   def logs_by(resolution)
     xs = logs.group_by{|item|
-      case resolution
-      when :hour
-        item.happened_at.change(:min=>0)
-      when :day
-        item.happened_at.beginning_of_day
-      when :month
-        item.happened_at.beginning_of_month
-      end
+      resolution.beginning_of(item.happened_at)
     }.map{|key, values|
       ys = values.map{|v| v.number }
-      [ key, ys.sum / ys.size ]
+      [ key, ys.sum.to_f / ys.size ]
     }.sort_by{|item|
       item.first
     }

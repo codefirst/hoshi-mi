@@ -15,13 +15,14 @@ class GraphsController < ApplicationController
   # GET /graphs/1.json
   def show
     @graph = Graph.find(params[:id])
-    @resolution = (params[:resolution] || 'hour').downcase.to_sym
+    resolution = HoshiMi::Resolution.new(params[:resolution] || 'day')
 
     morris = HoshiMi::MorrisGraph.new
-    morris.data = @graph.logs_by(@resolution).map {|time, value|
-      {:x => time.strftime(TIME_FORMAT[@resolution]), :y => value }
+    morris.data = @graph.logs_by(resolution).map {|time, value|
+      {:x => resolution.format(time), :y => value }
     }
     morris.label = @graph.name
+    @resolution = resolution.resolution
     @graph_js = morris.to_js
 
     respond_to do |format|
@@ -91,11 +92,4 @@ class GraphsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  private
-  TIME_FORMAT = {
-      :hour => "%Y-%m-%d %H:00",
-      :day  => "%Y-%m-%d",
-      :month => "%Y-%m"
-  }
 end
