@@ -47,7 +47,12 @@ end
 Spork.each_run do
 end
 
-
-
-
-
+def hoshi_mi_resolution(value, &block)
+  old = ENV['HOSHI_MI_RESOLUTION']
+  ENV['HOSHI_MI_RESOLUTION'] = value
+  begin
+    block.call
+  ensure
+    ENV['HOSHI_MI_RESOLUTION'] = old
+  end
+end

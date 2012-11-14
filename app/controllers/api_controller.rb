@@ -11,9 +11,11 @@ class ApiController < ApplicationController
       return
     end
 
-    now = Time.now
+    now = params[:time] ? Time.parse(params[:time]) : Time.now
+
     # delete today's log
-    Log.delete_all(["graph_id = ? and happened_at >= ? and happened_at <= ?", graph.id, now.beginning_of_day, now.end_of_day])
+    resolution = HoshiMi::Resolution.default
+    Log.delete_all(["graph_id = ? and happened_at >= ? and happened_at <= ?", graph.id, resolution.beginning_of(now), resolution.end_of(now)])
 
     # add log
     log = Log.new(:happened_at => now, :number => params[:number])
