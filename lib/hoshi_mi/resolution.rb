@@ -32,7 +32,7 @@ module HoshiMi
     attr_reader :resolution
 
     def initialize(resolution)
-      @resolution = resolution.downcase.to_sym
+      @resolution = resolution.to_s.downcase.to_sym
       unless RESOLUTION.include?(@resolution)
         raise "invalid resolution: #{@resolution}"
       end
