@@ -1,6 +1,8 @@
 Hoshi-mi
 ========================================
 
+[![Build Status](https://secure.travis-ci.org/codefirst/hoshi-mi.png?branch=master)](http://travis-ci.org/codefirst/hoshi-mi)
+
 Overview
 ------------------------------
 Hoshi-mi is a portable graph / visualization tool.
