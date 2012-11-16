@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+td.created-by, td.color {
+  width: 80px;
+}
