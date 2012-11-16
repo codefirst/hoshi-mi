@@ -1,7 +1,7 @@
-- @graphs.group_by{|g| g.service }.each do |service, xs|
-  %h3=service
+- @graphs.group_by{|g| g.service }.each do|service, xs|
+  %h3= service
   - xs.group_by{|g| g.section }.each do|section, ys|
-    %h4=section
+    %h4= section
     %table.table.table-striped
       - ys.each do|graph|
         %tr
