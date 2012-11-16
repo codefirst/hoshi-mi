@@ -13,6 +13,8 @@ gem 'haml-rails',   '~> 0.3.4'
 gem 'twitter-bootstrap-rails',   '~> 2.1.3'
 gem 'jquery-rails', '~> 2.0.2'
 
+gem 'newrelic_rpm'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
