@@ -65,4 +65,27 @@ describe ApiController do
         :number => value
       }
   end
+
+  context "error" do
+    shared_examples_for "not found" do
+      subject { response }
+      it { should be_missing }
+    end
+
+   describe "not exist graph" do
+      before do
+        post :log, :service => 'not_exist_service', :section => 'section', :graph => 'graph', :secret => 'aaa', :number => 1
+      end
+
+      it_behaves_like "not found"
+    end
+
+   describe "unauth graph" do
+      before do
+        post :log, :service => 'service', :section => 'section', :graph => 'graph', :secret => 'aaa', :number => 1
+      end
+
+      it_behaves_like "not found"
+    end
+  end
 end
