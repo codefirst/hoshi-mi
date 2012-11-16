@@ -22,6 +22,7 @@ class GraphsController < ApplicationController
       {:x => resolution.format(time), :y => value }
     }
     morris.label = @graph.name
+    morris.color = @graph.color
     @resolution = resolution.resolution
     @graph_js = morris.to_js
 
