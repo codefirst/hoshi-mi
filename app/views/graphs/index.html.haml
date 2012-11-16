@@ -1,9 +1,9 @@
-- @graphs.group_by{|g| g.service }.each do|service, xs|
+- each_service(@graphs) do|service, xs|
   %h3= service
-  - xs.group_by{|g| g.section }.each do|section, ys|
+  - each_section(xs) do|section, ys|
     %h4= section
     %table.table.table-striped
-      - ys.each do|graph|
+      - each_graph(ys) do|graph|
         %tr
           %td= link_to graph.name, graph
           %td.color= graph.color
