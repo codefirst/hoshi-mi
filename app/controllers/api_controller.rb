@@ -7,7 +7,7 @@ class ApiController < ApplicationController
     service, section, name = params[:service], params[:section], params[:graph]
     graph = Graph.where(:service => service, :section => section, :name => name, :secret => params[:secret]).first
     if graph.nil?
-      render :json => {:message => "#{service}/#{section}/#{name} not found"}.to_json
+      render :json => {:message => "#{service}/#{section}/#{name} not found"}.to_json, :status => 404
       return
     end
 
