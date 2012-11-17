@@ -18,4 +18,12 @@ module GraphsHelper
   def each_graph(graphs, &block)
     graphs.sort_by {|g| g.updated_at }.each(&block)
   end
+
+  def service_link(service)
+    link_to service, :action => :service, :service => service
+  end
+
+  def section_link(service, section)
+    link_to section, :action => :section, :service => service, :section => section
+  end
 end
