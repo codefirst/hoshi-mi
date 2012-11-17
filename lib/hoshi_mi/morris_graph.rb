@@ -6,7 +6,7 @@ module HoshiMi
       @data = []
       @label = 'Series A'
     end
-    attr_accessor :target, :data, :label
+    attr_accessor :target, :data, :label, :color
 
     def to_js
       javascript = <<END
@@ -17,7 +17,8 @@ Morris.Line({
   ],
   xkey: 'x',
   ykeys: ['y'],
-  labels: ['#{@label}']
+  labels: ['#{@label}'],
+  lineColors: ['#{@color}'],
 });
 END
       javascript
