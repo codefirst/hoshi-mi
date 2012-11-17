@@ -66,4 +66,17 @@ describe Graph do
       its(:first) { should  == [@time, 2.5] }
     end
   end
+
+  describe "color" do
+    context "blank" do
+      subject { @graph.color }
+      it { should == "#0b62a4" }
+    end
+
+    context "invalid color" do
+      it { expect {
+        @graph.color = "x"
+        @graph.save! }.to raise_error(ActiveRecord::RecordInvalid) }
+    end
+  end
 end
