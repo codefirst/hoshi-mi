@@ -1,0 +1,12 @@
+%h2
+  = link_to "Graphs", graphs_path
+  &raquo;
+  = service_link @service
+  &raquo;
+  = @section
+
+= render :partial => 'graphs', :locals => { :graphs => @graphs }
+
+%br
+
+= link_to 'New Graph', new_graph_path, :class => 'btn btn-primary' if user_signed_in?
