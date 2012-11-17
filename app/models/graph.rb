@@ -7,6 +7,9 @@ class Graph < ActiveRecord::Base
   validates_format_of :section, :with => /[\w]+/
   validates_format_of :name, :with => /[\w]+/
 
+  # color format: empty, #FFF, #FFFFFF
+  validates_format_of :color, :with => /^(?:|#(?:[0-9a-f]{3})(?:[0-9a-f]{3})?)$/i
+
   before_create :on_create
 
   def owner?(user)
@@ -34,7 +37,7 @@ class Graph < ActiveRecord::Base
 
   private
   def on_create
-    self.color = '#0000ff' if self.color.blank?
+    self.color = '#0b62a4' if self.color.blank?
     self.secret = random_str
   end
 
