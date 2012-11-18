@@ -1,7 +1,9 @@
 class Graph < ActiveRecord::Base
+  TtlDefault = 1_000
+
   has_many :logs
   belongs_to :created_by, :class_name => :User
-  attr_accessible :color, :name, :secret, :section, :service, :id, :created_by_id, :created_at, :updated_at
+  attr_accessible :color, :name, :secret, :section, :service, :id, :created_by_id, :ttl, :created_at, :updated_at
 
   validates_format_of :service, :with => /[\w]+/
   validates_format_of :section, :with => /[\w]+/
@@ -10,7 +12,10 @@ class Graph < ActiveRecord::Base
   # color format: empty, #FFF, #FFFFFF
   validates_format_of :color, :with => /^(?:|#(?:[0-9a-f]{3})(?:[0-9a-f]{3})?)$/i
 
+  validates_numericality_of :ttl
+
   before_create :on_create
+  before_save :on_save
 
   def owner?(user)
     return false if user.nil? or created_by.nil? or user.id.nil? or created_by.id.nil?
@@ -45,4 +50,9 @@ class Graph < ActiveRecord::Base
     UUIDTools::UUID.random_create.to_s.delete("-")
   end
 
+  def on_save
+    self.ttl = [ self.ttl, ENV['HOSHI_MI_TTL_MAX'].to_i, TtlDefault ].delete_if{|item|
+      item == nil || item == 0
+    }.min
+  end
 end

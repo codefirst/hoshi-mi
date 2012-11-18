@@ -88,4 +88,32 @@ describe ApiController do
       it_behaves_like "not found"
     end
   end
+
+  describe "ttl" do
+    before do
+      @graph.ttl = 3
+      @graph.logs.delete_all
+      @graph.save!
+
+      4.times {|i|
+        post_log i, @time + i.day
+      }
+
+      # discard AR model cache(?)
+      @graph = Graph.find @graph.id
+    end
+
+    subject { @graph.logs }
+    its(:count) { should == 3 }
+
+    describe 'first element' do
+      subject { @graph.logs.first }
+      its(:number) { should == 1 }
+    end
+
+    describe 'last element' do
+      subject { @graph.logs[-1] }
+      its(:number) { should == 3 }
+    end
+  end
 end
