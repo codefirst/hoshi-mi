@@ -93,4 +93,27 @@ class GraphsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def service
+    @service = params[:service]
+    @graphs = Graph.where(:service => @service)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      user = current_user
+      format.json { render :json => @graphs.map{|g| g.as_json(:current_user => user)} }
+    end
+  end
+
+  def section
+    @service = params[:service]
+    @section = params[:section]
+    @graphs  = Graph.where(:service => @service, :section => @section)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      user = current_user
+      format.json { render :json => @graphs.map{|g| g.as_json(:current_user => user)} }
+    end
+  end
 end

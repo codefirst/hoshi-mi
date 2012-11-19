@@ -1,4 +1,12 @@
-%h3= "#{@graph.service} > #{@graph.section} > #{@graph.name}"
+%h2
+  = link_to "Graphs", graphs_path
+  &raquo;
+  = service_link @graph.service
+  &raquo;
+  = section_link @graph.service, @graph.section
+  &raquo;
+  = @graph.name
+
 %p
   %b Created by:
   = user_link @graph.created_by

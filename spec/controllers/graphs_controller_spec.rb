@@ -91,5 +91,19 @@ describe GraphsController do
       }.should change(Graph, :count).by(-1)
     }
   end
+
+  context "get by service" do
+    before { get :service, :service => @graph.service }
+    subject { response }
+    it { should be_success }
+    it { assigns[:graphs].should be_include(@graph) }
+  end
+
+  context "get by service" do
+    before { get :section, :service => @graph.service, :section => @graph.section }
+    subject { response }
+    it { should be_success }
+    it { assigns[:graphs].should be_include(@graph) }
+  end
 end
 
