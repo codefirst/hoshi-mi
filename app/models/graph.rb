@@ -51,7 +51,8 @@ class Graph < ActiveRecord::Base
   end
 
   def on_save
-    self.ttl = [ self.ttl, ENV['HOSHI_MI_TTL_MAX'].to_i, TTL_DEFAULT ].delete_if{|item|
+    default = (ENV['HOSHI_MI_TTL_MAX'] || TTL_DEFAULT).to_i
+    self.ttl = [ self.ttl, default ].delete_if{|item|
       item == nil || item == 0
     }.min
   end

@@ -89,14 +89,14 @@ describe Graph do
 
     context "env value" do
       before {
-        ENV['HOSHI_MI_TTL_MAX'] = '5'
-        @graph.ttl = 500
+        ENV['HOSHI_MI_TTL_MAX'] = '2000'
+        @graph.ttl = 5000
         @graph.save!
       }
       after {
         ENV['HOSHI_MI_TTL_MAX'] = nil
       }
-      it { should == 5 }
+      it { should == 2000 }
     end
 
     context "specified value" do
