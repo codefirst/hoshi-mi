@@ -1,4 +1,6 @@
 HoshiMi::Application.routes.draw do
+  resources :complex_graphs
+
   resources :graphs
   match "service/:service" => "graphs#service"
   match "service/:service/:section" => "graphs#section"

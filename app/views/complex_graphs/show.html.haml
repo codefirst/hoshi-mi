@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Service:
+  = @complex_graph.service
+%p
+  %b Section:
+  = @complex_graph.section
+%p
+  %b Name:
+  = @complex_graph.name
+%p
+  %b Created by:
+  = @complex_graph.created_by
+
+= link_to 'Edit', edit_complex_graph_path(@complex_graph)
+\|
+= link_to 'Back', complex_graphs_path

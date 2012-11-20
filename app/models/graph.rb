@@ -3,6 +3,7 @@ class Graph < ActiveRecord::Base
 
   has_many :logs
   belongs_to :created_by, :class_name => :User
+  has_and_belongs_to_many :complex_graphs
   attr_accessible :color, :name, :secret, :section, :service, :id, :created_by_id, :ttl, :created_at, :updated_at
 
   validates_format_of :service, :with => /[\w]+/

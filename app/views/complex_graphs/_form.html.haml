@@ -1,0 +1,22 @@
+= form_for @complex_graph do |f|
+  -if @complex_graph.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@complex_graph.errors.count, "error")} prohibited this complex_graph from being saved:"
+      %ul
+        - @complex_graph.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :service
+    = f.text_field :service
+  .field
+    = f.label :section
+    = f.text_field :section
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :created_by
+    = f.text_field :created_by
+  .actions
+    = f.submit 'Save'

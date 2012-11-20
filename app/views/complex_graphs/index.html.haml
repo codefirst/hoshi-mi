@@ -1,0 +1,25 @@
+%h1 Listing complex_graphs
+
+%table
+  %tr
+    %th Service
+    %th Section
+    %th Name
+    %th Created by
+    %th
+    %th
+    %th
+
+  - @complex_graphs.each do |complex_graph|
+    %tr
+      %td= complex_graph.service
+      %td= complex_graph.section
+      %td= complex_graph.name
+      %td= complex_graph.created_by
+      %td= link_to 'Show', complex_graph
+      %td= link_to 'Edit', edit_complex_graph_path(complex_graph)
+      %td= link_to 'Destroy', complex_graph, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Complex graph', new_complex_graph_path
