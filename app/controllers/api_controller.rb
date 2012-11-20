@@ -17,6 +17,12 @@ class ApiController < ApplicationController
     resolution = HoshiMi::Resolution.default
     Log.delete_all(["graph_id = ? and happened_at >= ? and happened_at <= ?", graph.id, resolution.beginning_of(now), resolution.end_of(now)])
 
+    # data roundrobin
+    if Log.count >= graph.ttl
+      log = Log.where(:graph_id => graph).order(:happened_at).limit(1).offset(Log.count - graph.ttl).first
+      Log.delete_all(['happened_at <= ?', log.happened_at])
+    end
+
     # add log
     log = Log.new(:happened_at => now, :number => params[:number])
     log.graph = graph

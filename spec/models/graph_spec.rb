@@ -79,4 +79,32 @@ describe Graph do
         @graph.save! }.to raise_error(ActiveRecord::RecordInvalid) }
     end
   end
+
+  describe "ttl" do
+    subject { @graph.ttl }
+
+    context "default value" do
+      it { should == Graph::TTL_DEFAULT }
+    end
+
+    context "env value" do
+      before {
+        ENV['HOSHI_MI_TTL_MAX'] = '2000'
+        @graph.ttl = 5000
+        @graph.save!
+      }
+      after {
+        ENV['HOSHI_MI_TTL_MAX'] = nil
+      }
+      it { should == 2000 }
+    end
+
+    context "specified value" do
+      before {
+        @graph.ttl = 500
+        @graph.save!
+      }
+      it { should == 500 }
+    end
+  end
 end
