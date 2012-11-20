@@ -1,5 +1,5 @@
 class Graph < ActiveRecord::Base
-  TtlDefault = 1_000
+  TTL_DEFAULT = 1_000
 
   has_many :logs
   belongs_to :created_by, :class_name => :User
@@ -51,7 +51,7 @@ class Graph < ActiveRecord::Base
   end
 
   def on_save
-    self.ttl = [ self.ttl, ENV['HOSHI_MI_TTL_MAX'].to_i, TtlDefault ].delete_if{|item|
+    self.ttl = [ self.ttl, ENV['HOSHI_MI_TTL_MAX'].to_i, TTL_DEFAULT ].delete_if{|item|
       item == nil || item == 0
     }.min
   end

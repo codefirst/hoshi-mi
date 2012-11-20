@@ -84,7 +84,7 @@ describe Graph do
     subject { @graph.ttl }
 
     context "default value" do
-      it { should == Graph::TtlDefault }
+      it { should == Graph::TTL_DEFAULT }
     end
 
     context "env value" do
