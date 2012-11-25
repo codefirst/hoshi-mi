@@ -14,6 +14,18 @@ class ComplexGraphsController < ApplicationController
   # GET /complex_graphs/1.json
   def show
     @complex_graph = ComplexGraph.find(params[:id])
+    resolution = HoshiMi::Resolution.new(params[:resolution] || 'day')
+    morris = HoshiMi::MorrisGraph.new
+    morris.data = @complex_graph.logs_by(resolution).map {|time, values|
+      values.
+        map{|graph, value| { graph.name => value } }.
+        reduce(:merge).
+        merge(:x => resolution.format(time))
+    }
+    morris.labels = @complex_graph.graphs.map{|item| item.name }
+    morris.colors = @complex_graph.graphs.map{|item| item.color }
+    @resolution = resolution.resolution
+    @graph_js = morris.to_js
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +37,7 @@ class ComplexGraphsController < ApplicationController
   # GET /complex_graphs/new.json
   def new
     @complex_graph = ComplexGraph.new
+    @graphs = Graph.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +48,14 @@ class ComplexGraphsController < ApplicationController
   # GET /complex_graphs/1/edit
   def edit
     @complex_graph = ComplexGraph.find(params[:id])
+    @graphs = Graph.all
   end
 
   # POST /complex_graphs
   # POST /complex_graphs.json
   def create
     @complex_graph = ComplexGraph.new(params[:complex_graph])
+    @complex_graph.created_by = current_user
 
     respond_to do |format|
       if @complex_graph.save
@@ -57,6 +72,7 @@ class ComplexGraphsController < ApplicationController
   # PUT /complex_graphs/1.json
   def update
     @complex_graph = ComplexGraph.find(params[:id])
+    @complex_graph.graphs = Graph.where(:id => params[:graph].map{|id,_| id })
 
     respond_to do |format|
       if @complex_graph.update_attributes(params[:complex_graph])

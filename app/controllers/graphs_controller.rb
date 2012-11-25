@@ -21,8 +21,8 @@ class GraphsController < ApplicationController
     morris.data = @graph.logs_by(resolution).map {|time, value|
       {:x => resolution.format(time), :y => value }
     }
-    morris.label = @graph.name
-    morris.color = @graph.color
+    morris.labels = [ @graph.name ]
+    morris.colors = [ @graph.color ]
     @resolution = resolution.resolution
     @graph_js = morris.to_js
 

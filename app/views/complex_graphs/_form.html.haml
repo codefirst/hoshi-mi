@@ -16,7 +16,9 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :created_by
-    = f.text_field :created_by
+    - @graphs.each do|g|
+      %p
+        = check_box_tag "graph[#{g.id}]","1", @complex_graph.graphs.include?(g)
+        ="#{g.service} > #{g.section} > #{g.name}"
   .actions
     = f.submit 'Save'
