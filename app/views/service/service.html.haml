@@ -1,5 +1,5 @@
 %h2
-  = link_to "Graphs", graphs_path
+  = link_to "Graphs", url_for(:action => :index)
   &raquo;
   = @service
   - each_section(@graphs) do|section, xs|
@@ -8,4 +8,4 @@
 
 %br
 
-= link_to 'New Graph', new_graph_path, :class => 'btn btn-primary' if user_signed_in?
+= render :partial => 'buttons'

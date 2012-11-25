@@ -1,5 +1,5 @@
 %h2
-  = link_to "Graphs", graphs_path
+  = link_to "Graphs", url_for(:action => :index, :controller => :service)
   &raquo;
   = service_link @graph.service
   &raquo;

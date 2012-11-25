@@ -72,7 +72,7 @@ class ComplexGraphsController < ApplicationController
   # PUT /complex_graphs/1.json
   def update
     @complex_graph = ComplexGraph.find(params[:id])
-    @complex_graph.graphs = Graph.where(:id => params[:graph].map{|id,_| id })
+    @complex_graph.graphs = Graph.where(:id => (params[:graph] || []).map{|id,_| id })
 
     respond_to do |format|
       if @complex_graph.update_attributes(params[:complex_graph])
@@ -92,7 +92,7 @@ class ComplexGraphsController < ApplicationController
     @complex_graph.destroy
 
     respond_to do |format|
-      format.html { redirect_to complex_graphs_url }
+      format.html { redirect_to url_for(:controller=>:service, :action => :index) }
       format.json { head :no_content }
     end
   end
