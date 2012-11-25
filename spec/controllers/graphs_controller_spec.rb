@@ -14,13 +14,6 @@ describe GraphsController do
     @graph.save
   end
 
-  context "get index" do
-    before { get :index }
-    subject { response }
-    it { should be_success }
-    it { assigns[:graphs].should_not be_nil }
-  end
-
   context "cannot get secret keys of other's graphs in get index" do
     before { get :index, :format => 'json' }
     subject { JSON.parse(response.body)[-1] }
@@ -92,18 +85,6 @@ describe GraphsController do
     }
   end
 
-  context "get by service" do
-    before { get :service, :service => @graph.service }
-    subject { response }
-    it { should be_success }
-    it { assigns[:graphs].should be_include(@graph) }
-  end
 
-  context "get by service" do
-    before { get :section, :service => @graph.service, :section => @graph.section }
-    subject { response }
-    it { should be_success }
-    it { assigns[:graphs].should be_include(@graph) }
-  end
 end
 
