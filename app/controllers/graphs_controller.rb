@@ -21,8 +21,8 @@ class GraphsController < ApplicationController
     morris.data = @graph.logs_by(resolution).map {|time, value|
       {:x => resolution.format(time), :y => value }
     }
-    morris.label = @graph.name
-    morris.color = @graph.color
+    morris.labels = [ @graph.name ]
+    morris.colors = [ @graph.color ]
     @resolution = resolution.resolution
     @graph_js = morris.to_js
 
@@ -89,31 +89,9 @@ class GraphsController < ApplicationController
     @graph.destroy
 
     respond_to do |format|
-      format.html { redirect_to graphs_url }
+      format.html { redirect_to url_for(:controller=>:service, :action => :index) }
       format.json { head :no_content }
     end
   end
 
-  def service
-    @service = params[:service]
-    @graphs = Graph.where(:service => @service)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      user = current_user
-      format.json { render :json => @graphs.map{|g| g.as_json(:current_user => user)} }
-    end
-  end
-
-  def section
-    @service = params[:service]
-    @section = params[:section]
-    @graphs  = Graph.where(:service => @service, :section => @section)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      user = current_user
-      format.json { render :json => @graphs.map{|g| g.as_json(:current_user => user)} }
-    end
-  end
 end

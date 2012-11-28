@@ -2,5 +2,5 @@
   - each_graph(graphs) do|graph|
     %tr
       %td= link_to graph.name, graph
-      %td.color= graph.color
+      %td.color= graph.color rescue ''
       %td.created-by= user_link graph.created_by

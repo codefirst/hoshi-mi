@@ -29,7 +29,7 @@
           .container.nav-collapse
             %ul.nav
               %li= link_to "Top", root_path
-              %li= link_to "Graphs", graphs_path
+              %li= link_to "Graphs", url_for(:action => :index, :controller => :service)
               %li= link_to "Docs", "https://hoshi-mi.readthedocs.org"
             %ul.nav.pull-right
               - if user_signed_in?
@@ -50,7 +50,7 @@
               %h3 Menu
               %ul.nav.nav-list
                 %li= link_to "Top", root_path
-                %li= link_to "Graphs", graphs_path
+                %li= link_to "Graphs", url_for(:action => :index, :controller => :service)
                 %li= link_to "Docs", "https://hoshi-mi.readthedocs.org"
 
       %footer

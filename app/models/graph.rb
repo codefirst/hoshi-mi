@@ -3,6 +3,7 @@ class Graph < ActiveRecord::Base
 
   has_many :logs
   belongs_to :created_by, :class_name => :User
+  has_and_belongs_to_many :complex_graphs
   attr_accessible :color, :name, :secret, :section, :service, :id, :created_by_id, :ttl, :created_at, :updated_at
 
   validates_format_of :service, :with => /[\w]+/
@@ -30,13 +31,12 @@ class Graph < ActiveRecord::Base
   end
 
   def logs_by(resolution)
-    xs = logs.group_by{|item|
-      resolution.beginning_of(item.happened_at)
-    }.map{|key, values|
-      ys = values.map{|v| v.number }
-      [ key, ys.sum.to_f / ys.size ]
-    }.sort_by{|item|
-      item.first
+    logs.group_by{|log|
+      resolution.beginning_of(log.happened_at)
+    }.map{|date, logs|
+      [ date, Log.average(logs) ]
+    }.sort_by{|date,_|
+      date
     }
   end
 
