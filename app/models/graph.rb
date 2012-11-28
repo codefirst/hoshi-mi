@@ -31,12 +31,12 @@ class Graph < ActiveRecord::Base
   end
 
   def logs_by(resolution)
-    logs.group_by{|item|
-      resolution.beginning_of(item.happened_at)
-    }.map{|key, values|
-      [ key, Log.average(values) ]
-    }.sort_by{|item|
-      item.first
+    logs.group_by{|log|
+      resolution.beginning_of(log.happened_at)
+    }.map{|date, logs|
+      [ date, Log.average(logs) ]
+    }.sort_by{|date,_|
+      date
     }
   end
 

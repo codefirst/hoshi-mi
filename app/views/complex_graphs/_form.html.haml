@@ -19,6 +19,10 @@
     - @graphs.each do|g|
       %p
         = check_box_tag "graph[#{g.id}]","1", @complex_graph.graphs.include?(g)
-        ="#{g.service} > #{g.section} > #{g.name}"
+        =g.service
+        &raquo;
+        =g.section
+        &raquo;
+        =g.name
   .actions
     = f.submit 'Save'

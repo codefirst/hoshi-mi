@@ -29,10 +29,10 @@ END
     end
 
     def data_yaxis
-      xs = data.map{|item| item.keys }.
+      data.map{|item| item.keys }.
         flatten.
         uniq.
-        reject{|item| item == :x }.
+        reject{|axis| axis == :x }.
         to_json
     end
   end
