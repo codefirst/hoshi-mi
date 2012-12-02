@@ -1,0 +1,9 @@
+%h1 Editing complex_graph
+
+= render 'form'
+
+= button_to 'Destroy', {:action => :destroy}, :confirm => 'Are you sure?', :class => 'btn btn-danger', :method => :delete
+
+= link_to 'Show', @complex_graph
+\|
+= link_to 'Back', complex_graphs_path

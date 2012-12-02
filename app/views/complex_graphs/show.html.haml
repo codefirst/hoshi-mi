@@ -1,0 +1,31 @@
+%h2
+  = link_to "Graphs", url_for(:action => :index, :controller => :service)
+  &raquo;
+  = service_link @complex_graph.service
+  &raquo;
+  = section_link @complex_graph.service, @complex_graph.section
+  &raquo;
+  = @complex_graph.name
+
+%p
+  %b Created by:
+  = user_link @complex_graph.created_by
+%ul.nav.nav-tabs
+  - if HoshiMi::Resolution.default <= HoshiMi::Resolution.month
+    %li{ :class => active?(:month) }= link_to("Monthly", complex_graph_path(@complex_graph, :resolution => :month))
+  - if HoshiMi::Resolution.default <= HoshiMi::Resolution.day
+    %li{ :class => active?(:day)   }= link_to("Daily"  , complex_graph_path(@complex_graph, :resolution => :day))
+  - if HoshiMi::Resolution.default <= HoshiMi::Resolution.hour
+    %li{ :class => active?(:hour)  }= link_to("Hourly" , complex_graph_path(@complex_graph, :resolution => :hour))
+
+
+#graph
+
+- if @complex_graph.owner?(current_user)
+  = link_to 'Edit', edit_complex_graph_path(@complex_graph)
+  \|
+= link_to 'Back', complex_graphs_path
+
+= content_for :javascript do
+  :javascript
+    #{@graph_js}

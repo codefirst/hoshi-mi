@@ -1,7 +1,10 @@
 HoshiMi::Application.routes.draw do
+  resources :complex_graphs
   resources :graphs
-  match "service/:service" => "graphs#service"
-  match "service/:service/:section" => "graphs#section"
+
+  match "service" => "service#index"
+  match "service/:service" => "service#service"
+  match "service/:service/:section" => "service#section"
   post 'api/:service/:section/:graph' => 'api#log', :as => :log
 
   get "welcome/index"

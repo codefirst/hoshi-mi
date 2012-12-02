@@ -1,0 +1,10 @@
+%h2 Graphs
+
+- each_service(@graphs) do|service, xs|
+  %h3= service_link(service)
+  - each_section(xs) do|section, ys|
+    %h4= section_link(service, section)
+    = render :partial => 'graphs', :locals => { :graphs => ys }
+%br
+
+= render :partial => 'buttons'
