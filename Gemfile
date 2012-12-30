@@ -10,7 +10,8 @@ gem 'omniauth-twitter'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'haml-rails',   '~> 0.3.4'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails',   '~> 2.1.6'
+# 2.1.9 with 1.8 compatibility fix
+gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :ref => 'b126c86a57fd0512e296be9f73b0613c34a89bfb'
 gem 'jquery-rails', '~> 2.0.2'
 
 
