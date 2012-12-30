@@ -21,6 +21,14 @@ Setup
     $ bundle exec rake db:migrate
     $ bundle exec rails s
 
+Deploy for JRuby
+------------------------------
+
+    $ bundle exec rake assets:precomile
+    $ bundle exec warble
+
+and deploy `hoshi-mi.war` to your prefer application server(e.g. Tomcat).
+
 Test
 ------------------------------
 

@@ -6,14 +6,12 @@ gem 'json'
 gem 'uuidtools'
 gem 'devise'
 gem 'omniauth-twitter'
-gem 'thin'
 
 gem 'sass-rails',   '~> 3.2.3'
 gem 'haml-rails',   '~> 0.3.4'
 gem 'twitter-bootstrap-rails',   '~> 2.1.3'
 gem 'jquery-rails', '~> 2.0.2'
 
-gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,12 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :postgresql do
-  gem 'pg'
-end
-
 group :test, :development do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'spork'
   gem 'guard-spork'
@@ -37,7 +30,32 @@ group :test, :development do
   gem 'rb-fsevent'
 end
 
+platform :ruby do
+  gem 'thin'
+  gem 'newrelic_rpm'
 
+  group :postgresql do
+    gem 'pg'
+  end
+
+  group :test, :development do
+    gem 'sqlite3'
+  end
+end
+
+platform :jruby do
+  gem 'puma'
+  gem 'therubyrhino'
+
+  group :postgresql do
+    gem 'activerecord-jdbcpostgresql-adapter'
+  end
+
+  group :test, :development do
+    gem 'activerecord-jdbcsqlite3-adapter'
+    gem 'warbler'
+  end
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

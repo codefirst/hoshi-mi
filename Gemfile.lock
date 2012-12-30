@@ -170,6 +170,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-jdbcpostgresql-adapter
+  activerecord-jdbcsqlite3-adapter
   devise
   guard-rspec
   guard-spork
@@ -179,13 +181,16 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-twitter
   pg
+  puma
   rails (= 3.2.8)
   rb-fsevent
   rspec-rails
   sass-rails (~> 3.2.3)
   spork
   sqlite3
+  therubyrhino
   thin
   twitter-bootstrap-rails (~> 2.1.3)
   uglifier (>= 1.0.3)
   uuidtools
+  warbler
