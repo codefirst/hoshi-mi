@@ -36,7 +36,7 @@
                 %li= user_link current_user
                 %li= link_to "Logout", destroy_user_session_path
               - else
-                %li= link_to "Login", user_omniauth_authorize_path(:twitter)
+                %li= link_to "Login", user_omniauth_authorize_path(Settings.omniauth.provider.to_sym)
 
     .container
 

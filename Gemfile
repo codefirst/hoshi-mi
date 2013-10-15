@@ -7,6 +7,7 @@ gem 'uuidtools'
 gem 'settingslogic'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'omniauth-redmine', :github => 'suer/omniauth-redmine'
 
 gem 'sass-rails',   '~> 3.2.3'
 gem 'haml-rails',   '~> 0.3.4'

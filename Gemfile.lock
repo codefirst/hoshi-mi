@@ -8,6 +8,15 @@ GIT
       execjs
       railties (>= 3.1)
 
+GIT
+  remote: git://github.com/suer/omniauth-redmine.git
+  revision: 0b13f666044e612d0bfcf42e872370a6c8da72f4
+  specs:
+    omniauth-redmine (0.0.1)
+      multi_json
+      omniauth (~> 1.1)
+      omniauth-oauth
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -219,6 +228,7 @@ DEPENDENCIES
   json
   less-rails
   newrelic_rpm
+  omniauth-redmine!
   omniauth-twitter
   pg
   puma

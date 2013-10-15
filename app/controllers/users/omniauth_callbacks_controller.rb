@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < ApplicationController
-  def twitter
+  define_method Settings.omniauth.provider do
     uid = env["omniauth.auth"]["uid"]
     name = env["omniauth.auth"]["info"]["nickname"]
     icon_url = env["omniauth.auth"]["info"]["image"]

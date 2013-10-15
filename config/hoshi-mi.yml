@@ -1,0 +1,3 @@
+omniauth:
+  provider: <%= ENV['OMNIAUTH_PROVIDER'] || 'twitter' %>
+  args: <%= ENV['OMNIAUTH_ARGS'] || "['ema0BAovAaly7DAU11rPQ', '7k4UPa5AXpxG3bzGSKkWicXzO4bGyclkwmVvFswye1A']" %>
