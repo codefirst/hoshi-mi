@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 
 gem 'json'
 gem 'uuidtools'
+gem 'settingslogic'
 gem 'devise'
 gem 'omniauth-twitter'
 
