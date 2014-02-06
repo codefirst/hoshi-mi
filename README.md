@@ -2,6 +2,7 @@ Hoshi-mi
 ========================================
 
 [![Build Status](https://secure.travis-ci.org/codefirst/hoshi-mi.png?branch=master)](http://travis-ci.org/codefirst/hoshi-mi)
+[![Code Climate](https://codeclimate.com/github/codefirst/hoshi-mi.png)](https://codeclimate.com/github/codefirst/hoshi-mi)
 
 Overview
 ------------------------------
