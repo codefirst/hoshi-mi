@@ -43,9 +43,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: hoshi-mi_production
+  adapter: sqlite3
+  database: db/production.sqlite3
   pool: 5
-  username: hoshi-mi
-  password:
+  timeout: 5000
