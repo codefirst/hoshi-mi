@@ -6,4 +6,5 @@ rvm:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate spec
 notifications:
-  webhooks: http://dashbozu.herokuapp.com/hook/travisci
+  webhooks:
+    secure: "QjO7g+rdKniE5lbL9nmC1kfhWE2mvLoWb1SuZZNd7r6SiN75UyHKqTXHR/H70zOb6i0XNnb11caS5890aeyKEEyMM/82lQRQnQUQqBDe+FkfBism2uBiLzh6RXZLzc7fdrPrTWjw8WuPT0T0ez5Ix8iRY4SDvyuXKD8Kei3ZK5Y="
