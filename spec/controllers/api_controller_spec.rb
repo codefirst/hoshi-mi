@@ -108,7 +108,7 @@ describe ApiController do
 
     describe 'first element' do
       subject { @graph.logs.first }
-      its(:number) { pending }
+      its(:number) { should == 1 }
     end
 
     describe 'last element' do
