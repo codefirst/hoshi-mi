@@ -1,7 +1,7 @@
 class Graph < ActiveRecord::Base
   TTL_DEFAULT = 1_000
 
-  has_many :logs
+  has_many :logs, :order => 'created_at ASC'
   belongs_to :created_by, :class_name => :User
   has_and_belongs_to_many :complex_graphs
   attr_accessible :color, :name, :secret, :section, :service, :id, :created_by_id, :ttl, :created_at, :updated_at
