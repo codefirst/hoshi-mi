@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.17'
+gem 'rails', '3.2.18'
 
 gem 'json'
 gem 'uuidtools'
 gem 'settingslogic'
 gem 'devise'
 gem 'omniauth-twitter'
-gem 'omniauth-redmine', :github => 'suer/omniauth-redmine'
+gem 'omniauth-redmine'
 
 gem 'sass-rails',   '~> 3.2.3'
 gem 'haml-rails',   '~> 0.3.4'
