@@ -1,6 +1,8 @@
 Hoshi-mi
 ========================================
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 [![Build Status](https://secure.travis-ci.org/codefirst/hoshi-mi.png?branch=master)](http://travis-ci.org/codefirst/hoshi-mi)
 [![Code Climate](https://codeclimate.com/github/codefirst/hoshi-mi.png)](https://codeclimate.com/github/codefirst/hoshi-mi)
 [![wercker status](https://app.wercker.com/status/cb81a88dbe4a226d0f71f8132980912d/s/ "wercker status")](https://app.wercker.com/project/bykey/cb81a88dbe4a226d0f71f8132980912d)

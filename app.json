@@ -1,0 +1,15 @@
+{
+  "name": "Hoshi-mi",
+  "description": "☆ミ: A portable graph / visualization tool",
+  "repository": "https://github.com/codefirst/hoshi-mi/",
+  "logo": "https://raw.githubusercontent.com/codefirst/hoshi-mi/master/app/assets/images/apple-touch-icon-144x144.png",
+  "env": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate RAILS_ENV=production"
+  }
+}
+
