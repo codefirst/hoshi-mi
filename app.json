@@ -4,6 +4,10 @@
   "repository": "https://github.com/codefirst/hoshi-mi/",
   "logo": "https://raw.githubusercontent.com/codefirst/hoshi-mi/master/app/assets/images/apple-touch-icon-144x144.png",
   "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies",
+      "generator": "secret"
+    }
   },
   "addons": [
     "heroku-postgresql"
