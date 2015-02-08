@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe GraphsController do
+describe GraphsController, :type => :controller  do
   include Devise::TestHelpers
   before do
     @owner = User.new
@@ -38,9 +38,9 @@ describe GraphsController do
   context "get create" do
     before { @graph.id = nil }
     it {
-      lambda {
+      expect(lambda {
         post :create, :graph => @graph.attributes
-      }.should change(Graph, :count)
+      }).to change(Graph, :count)
     }
   end
 
@@ -79,9 +79,9 @@ describe GraphsController do
 
   context "delete destroy" do
     it {
-      lambda {
+      expect(lambda {
         delete :destroy, :id => @graph.to_param
-      }.should change(Graph, :count).by(-1)
+      }).to change(Graph, :count).by(-1)
     }
   end
 

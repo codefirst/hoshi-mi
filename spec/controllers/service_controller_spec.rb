@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ServiceController do
+describe ServiceController, :type => :controller  do
   include Devise::TestHelpers
   before do
     @owner = User.new
@@ -17,21 +17,21 @@ describe ServiceController do
     before { get :index }
     subject { response }
     it { should be_success }
-    it { assigns[:graphs].should_not be_nil }
+    it { expect(assigns[:graphs]).to_not be_nil }
   end
 
   context "get by service" do
     before { get :service, :service => @graph.service }
     subject { response }
     it { should be_success }
-    it { assigns[:graphs].should be_include(@graph) }
+    it { expect(assigns[:graphs]).to be_include(@graph) }
   end
 
   context "get by service" do
     before { get :section, :service => @graph.service, :section => @graph.section }
     subject { response }
     it { should be_success }
-    it { assigns[:graphs].should be_include(@graph) }
+    it { expect(assigns[:graphs]).to be_include(@graph) }
   end
 
 end

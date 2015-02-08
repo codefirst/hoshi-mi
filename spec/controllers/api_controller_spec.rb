@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe ApiController do
+describe ApiController, :type => :controller do
   include Devise::TestHelpers
   before do
     sign_in User.new
