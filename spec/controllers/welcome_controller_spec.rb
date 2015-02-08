@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../rails_helper'
 
-describe WelcomeController do
+describe WelcomeController, :type => :controller do
   include Devise::TestHelpers
 
   before do

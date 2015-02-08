@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ComplexGraphsController do
+describe ComplexGraphsController, :type => :controller do
   include Devise::TestHelpers
   before do
     @owner = User.new
@@ -28,7 +28,7 @@ describe ComplexGraphsController do
     it "assigns all complex_graphs as @complex_graphs" do
       complex_graph = ComplexGraph.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:complex_graphs).should eq([complex_graph])
+      expect(assigns(:complex_graphs)).to eq([complex_graph])
     end
   end
 
@@ -36,14 +36,14 @@ describe ComplexGraphsController do
     it "assigns the requested complex_graph as @complex_graph" do
       complex_graph = ComplexGraph.create! valid_attributes
       get :show, {:id => complex_graph.to_param}, valid_session
-      assigns(:complex_graph).should eq(complex_graph)
+      expect(assigns(:complex_graph)).to eq(complex_graph)
     end
   end
 
   describe "GET new" do
     it "assigns a new complex_graph as @complex_graph" do
       get :new, {}, valid_session
-      assigns(:complex_graph).should be_a_new(ComplexGraph)
+      expect(assigns(:complex_graph)).to be_a_new(ComplexGraph)
     end
   end
 
@@ -51,7 +51,7 @@ describe ComplexGraphsController do
     it "assigns the requested complex_graph as @complex_graph" do
       complex_graph = ComplexGraph.create! valid_attributes
       get :edit, {:id => complex_graph.to_param}, valid_session
-      assigns(:complex_graph).should eq(complex_graph)
+      expect(assigns(:complex_graph)).to eq(complex_graph)
     end
   end
 
@@ -65,29 +65,29 @@ describe ComplexGraphsController do
 
       it "assigns a newly created complex_graph as @complex_graph" do
         post :create, {:complex_graph => valid_attributes}, valid_session
-        assigns(:complex_graph).should be_a(ComplexGraph)
-        assigns(:complex_graph).should be_persisted
+        expect(assigns(:complex_graph)).to be_a(ComplexGraph)
+        expect(assigns(:complex_graph)).to be_persisted
       end
 
       it "redirects to the created complex_graph" do
         post :create, {:complex_graph => valid_attributes}, valid_session
-        response.should redirect_to(ComplexGraph.last)
+        expect(response).to redirect_to(ComplexGraph.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved complex_graph as @complex_graph" do
         # Trigger the behavior that occurs when invalid params are submitted
-        ComplexGraph.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(ComplexGraph).to receive(:save).and_return(false)
         post :create, {:complex_graph => {}}, valid_session
-        assigns(:complex_graph).should be_a_new(ComplexGraph)
+        expect(assigns(:complex_graph)).to be_a_new(ComplexGraph)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        ComplexGraph.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(ComplexGraph).to receive(:save).and_return(false)
         post :create, {:complex_graph => {}}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -100,20 +100,20 @@ describe ComplexGraphsController do
         # specifies that the ComplexGraph created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        ComplexGraph.any_instance.should_receive(:graphs=).with(Graph.all)
+        expect_any_instance_of(ComplexGraph).to receive(:graphs=).with(Graph.all)
         put :update, {:id => complex_graph.to_param, :graph => Graph.all.map{|g|g.id}}, valid_session
       end
 
       it "assigns the requested complex_graph as @complex_graph" do
         complex_graph = ComplexGraph.create! valid_attributes
         put :update, {:id => complex_graph.to_param, :complex_graph => valid_attributes }, valid_session
-        assigns(:complex_graph).should eq(complex_graph)
+        expect(assigns(:complex_graph)).to eq(complex_graph)
       end
 
       it "redirects to the complex_graph" do
         complex_graph = ComplexGraph.create! valid_attributes
         put :update, {:id => complex_graph.to_param, :complex_graph => valid_attributes}, valid_session
-        response.should redirect_to(complex_graph)
+        expect(response).to redirect_to(complex_graph)
       end
     end
 
@@ -121,17 +121,17 @@ describe ComplexGraphsController do
       it "assigns the complex_graph as @complex_graph" do
         complex_graph = ComplexGraph.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        ComplexGraph.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(ComplexGraph).to receive(:save).and_return(false)
         put :update, {:id => complex_graph.to_param, :complex_graph => {}}, valid_session
-        assigns(:complex_graph).should eq(complex_graph)
+        expect(assigns(:complex_graph)).to eq(complex_graph)
       end
 
       it "re-renders the 'edit' template" do
         complex_graph = ComplexGraph.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        ComplexGraph.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(ComplexGraph).to receive(:save).and_return(false)
         put :update, {:id => complex_graph.to_param, :complex_graph => {}}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end

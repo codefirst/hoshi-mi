@@ -24,7 +24,10 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'test-unit', '~> 3.0'
   gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'spork'
   gem 'guard-spork'
   gem 'guard-rspec'
