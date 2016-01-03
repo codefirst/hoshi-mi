@@ -14,7 +14,7 @@ Hoshi-mi is a portable graph / visualization tool.
 Requirements
 ------------------------------
 
- * Ruby 1.8.7 or 1.9.3
+ * Ruby 1.9.3 / 2.0.0 / 2.1 / 2.2 / 2.3
  * Bundler
 
 Setup
