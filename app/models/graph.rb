@@ -30,6 +30,10 @@ class Graph < ActiveRecord::Base
     super(options)
   end
 
+  def recent_logs
+    logs.reorder('happened_at DESC').limit(7)
+  end
+
   def logs_by(resolution)
     logs.group_by{|log|
       resolution.beginning_of(log.happened_at)

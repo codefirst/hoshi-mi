@@ -54,6 +54,7 @@ describe GraphsController, :type => :controller  do
     before { get :show, :id => @graph.to_param, :format => 'json' }
     subject { JSON.parse(response.body) }
     it { should_not have_key('secret') }
+    it { should have_key('recent_logs') }
   end
 
   context "can get secret keys of my graphs in get index" do

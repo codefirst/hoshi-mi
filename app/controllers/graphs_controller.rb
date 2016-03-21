@@ -28,7 +28,7 @@ class GraphsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @graph.as_json(:current_user => current_user) }
+      format.json { render :json => @graph.as_json(:current_user => current_user, :methods => :recent_logs ) }
     end
   end
 
