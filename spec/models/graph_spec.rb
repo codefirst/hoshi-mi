@@ -67,6 +67,29 @@ describe Graph do
     end
   end
 
+  describe "recent_logs" do
+    before do
+      @graph.logs = []
+      @graph.save
+
+      10.times do |i|
+        log = Log.new(:happened_at => i.days.ago, :number => i)
+        log.graph = @graph
+        log.save
+      end
+    end
+
+    context "limit" do
+      subject { @graph.recent_logs }
+      it { should have(7).items }
+    end
+
+    context "order" do
+      subject { @graph.recent_logs.first }
+      its(:number) { eq 1 }
+    end
+  end
+
   describe "color" do
     context "blank" do
       subject { @graph.color }
