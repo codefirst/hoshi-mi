@@ -81,7 +81,7 @@ describe Graph do
 
     context "limit" do
       subject { @graph.recent_logs }
-      it { should have(7).items }
+      it { should have(8).items }
     end
 
     context "order" do

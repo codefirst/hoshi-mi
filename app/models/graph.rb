@@ -31,7 +31,7 @@ class Graph < ActiveRecord::Base
   end
 
   def recent_logs
-    logs.reorder('happened_at DESC').limit(7)
+    logs.reorder('happened_at DESC').limit(8)
   end
 
   def logs_by(resolution)
